@@ -1,4 +1,4 @@
-## DOOM/FX MSU-1
+# DOOM/FX MSU-1
 
 This branch contains the source code for my [Doom MSU-1 patch](https://romhacks.org/romhacks/doom-snes-msu-1-snes/).  
 Building the game works the same here as the main branch.  
@@ -20,7 +20,7 @@ Once it has finished, you can delete the FLAC files.
 To use the PCM set with the built ROM, assemble the ROM and rename the .sfc rom in ``HD/source/compbi`` to ``doom_msu1.sfc`` and move it into ``msu1_data``.  
 The SFC, MSU, and PCM files should all have the same prefix.  
 
-# Original README.md
+## Original README.md
 
 # DOOM-FX
 Doom/FX for Super Nintendo with SuperFX GSU2A  
