@@ -315,6 +315,14 @@ _LoadSong
 ;
 ;	>>>   SHUT OFF EVERYTHING   <<<
 ;
+
+	; 1. Stop the MSU-1
+	mode	'ax!'
+	stz	msu_volume ; mute msu1 to prevent any noise while track switching occurs
+	stz	msu_control
+
+	mode	'AX!'
+
 	lda	#DCOM_STOP_SONG
 	ldy	#$0000
 	jsl	__SendDriverCommand
@@ -351,6 +359,35 @@ _LSG300
 _LSG500
 	dex
 	bne	_LSG500
+	; Now that we've let the driver go about its business,
+	; load the current MSU-1 track and start playing it.
+
+	; Step 1 was completed earlier for timing on intermission fadeout
+	; 1. Stop the MSU-1
+;	mode	'ax!'
+;	stz	msu_volume ; mute msu1 to prevent any noise while track switching occurs
+;	stz	msu_control
+
+	; 2. Load the track
+	mode	'AX!'
+	lda	_MSUSong ; Load current track number from RAM and store it
+	sta	MSU_TRACK
+
+	; 3. Wait for loading to finish
+	mode	'ax!'
+msuaudiobusyloop
+	bit	msu_status ; Is the audio busy flag set?
+	bvs	msuaudiobusyloop ; Loop until it isn't
+
+	; 4. Set volume and play
+	lda	#MusicVolume				; Set volume to max
+	sta	MSU_VOLUME
+
+	lda	#audiostate_repeat	; Start playing it on loop
+	sta	MSU_CONTROL
+	; Return back to previous processor mode now that we're done so the game doesn't implode
+	mode	'AX!'
+
 	rtl
 
 

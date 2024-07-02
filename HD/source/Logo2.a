@@ -33,9 +33,33 @@ Logo2
 	jsl	XFer
 ;
 	ifn	useSOUND
+
+	; stop the msu
+	mode	'ax!'
+	stz	msu_volume
+	stz	msu_control
+
+	; load the track
 	mode	'AX!'
-	lda	#((e1m2_sng_MODULE<<8)|e1m2_sng) ; E1M2 Song
-	jsl	_PlaySong
+	lda	#D_E1M2
+	sta	MSU_TRACK
+
+	; wait for load to finish
+	mode	'ax!'
+msuaudiobusyloop_logo2 ; wait for msu to finish loading track
+	bit	msu_status
+	bvs	msuaudiobusyloop_logo2
+
+	; set volume and play
+	lda	#MusicVolume
+	sta	MSU_VOLUME
+
+	lda	#audiostate_norepeat
+	sta	MSU_CONTROL
+
+;	mode	'AX!'
+;	lda	#((e1m2_sng_MODULE<<8)|e1m2_sng) ; E1M2 Song
+;	jsl	_PlaySong
 	endif
 ;
 	jsl	InitNormalNMI

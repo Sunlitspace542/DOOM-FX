@@ -125,7 +125,22 @@ _RLP2200
 	nop
 	move	r2,#$c000
 _RLP2500
-	move	r6,(<(PlayerMouseX+RLGSUSNESXVarsO))
+;	move	r6,(<(PlayerMouseX+RLGSUSNESXVarsO))
+	move	r0,(<(PlayerJoy+RLGSUSNESXVarsO)) ; Get Joystick Bits
+	move	r1,#pjRUN			  ; RUNNING?
+	and	r1
+	move	r1,#56
+	beq	notrunning			  ; No
+	nop
+	bne	running				  ; Yes
+	nop
+notrunning
+	iwt	r6,#$0780
+	bra	donestrafe
+	nop
+running
+	iwt	r6,#$0B40
+donestrafe
 	move	r0,(<FPSRatio)			; Get FPSRatio
 ;	with	r0
 	lmult
@@ -212,7 +227,9 @@ _RLP2500
 ;
 ;	with	r0
 	add	r1
-	bra	_RLP4000			; Don't Rotate while STRAFING!
+;	bra	_RLP4000			; Don't Rotate while STRAFING!
+	nop
+	nop
 ;	from	r0
 	sbk
 ;

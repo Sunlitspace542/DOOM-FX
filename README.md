@@ -1,3 +1,27 @@
+## DOOM/FX MSU-1
+
+This branch contains the source code for my [Doom MSU-1 patch](https://romhacks.org/romhacks/doom-snes-msu-1-snes/).  
+Building the game works the same here as the main branch.  
+
+``msu1_data`` contains the MSU-1 manifest file (``doom_msu1.msu``) and the JSON file used to build the PCM set.  
+
+Doom MSU-1 Credits  
+Randy Linden - Programming Doom for SNES and releasing the source code, making this hack possible  
+Sunlit - MSU-1 implementation  
+Monika - Programming assistance and moral support  
+CrispyBuns - Real hardware testing  
+xttl - Original circlestrafing code  
+qwertymodo - [MSUPCM++ PCM audio creation tool](https://github.com/qwertymodo/msupcmplusplus/)
+
+## Building the PCM set
+[Download this FLAC set.](https://sc55.duke4.net/flac/doom_sc55_flac.zip) and extract the contents of the ``MUSIC`` directory in that zip into ``msu1_data``.  
+Go to ``msu1_data`` and run ``msupcm.exe`` to generate the PCM files. You will get 21 PCM audio files with the filename prefix ``doom-msu1-``.  
+Once it has finished, you can delete the FLAC files.  
+To use the PCM set with the built ROM, assemble the ROM and rename the .sfc rom in ``HD/source/compbi`` to ``doom_msu1.sfc`` and move it into ``msu1_data``.  
+The SFC, MSU, and PCM files should all have the same prefix.  
+
+# Original README.md
+
 # DOOM-FX
 Doom/FX for Super Nintendo with SuperFX GSU2A  
 

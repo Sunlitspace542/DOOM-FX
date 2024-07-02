@@ -375,7 +375,7 @@ CJY2000
 	sta	PlayerJoy			; GSU JoyStick Bits
 	mode	'a!'
 	and	#(pjSTRAFELEFT|pjSTRAFERIGHT)	; STRAFE?
-	beq	CJY2200				; No
+	bra	CJY2200				; No
 	ldy	#($03c0<<1)			; Yes, Set Strafing Velocity
 	sty	ITemp
 	lda	JOY1+1
@@ -388,7 +388,7 @@ CJY2000
 CJY2200
 	lda	PlayerJoy0			; Previously STRAFING?
 	and	#(pjSTRAFELEFT|pjSTRAFERIGHT)
-	beq	CJY2220				; No
+	bra	CJY2220				; No
 	mode	'A!'				; Yes, Clear Strafing Velocity
 	stz	PlayerMouseX
 CJY2220

@@ -71,7 +71,7 @@ InitVars
 	sta	_SkillLevel
 	lda	#$FFFF				; Enable Music/SoundEffects
 	sta	_SoundsOn
-	sta	_MusicOn
+	stz	_MusicOn			; Disable S-SMP music
 ;
 	lda	#'AR'				; VARS Now Valid
 	sta	RandSentry

@@ -35,8 +35,33 @@ Title
 	mode	'AX'
 ;
 	ifn	useSOUND
-	lda	#((intro_sng_MODULE<<8)|(intro_sng)) ; INTRO Song
-	jsl	_PlaySong
+
+	; stop the msu
+	mode	'ax!'
+	stz	msu_volume
+	stz	msu_control
+
+	; load the track
+	mode	'AX!'
+	lda	#D_INTRO
+	sta	MSU_TRACK
+
+	; wait for load to finish
+	mode	'ax!'
+msuaudiobusyloop_intro ; wait for msu to finish loading track
+	bit	msu_status
+	bvs	msuaudiobusyloop_intro
+
+	; set volume and play
+	lda	#MusicVolume
+	sta	MSU_VOLUME
+
+	lda	#audiostate_norepeat
+	sta	MSU_CONTROL
+	mode	'AX!'
+
+;	lda	#((intro_sng_MODULE<<8)|(intro_sng)) ; INTRO Song
+;	jsl	_PlaySong
 	endif
 ;
 	ife	usePAL

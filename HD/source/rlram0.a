@@ -55,6 +55,7 @@ _TSData			ds.l	1		; Pointer to Data
 SoundQueueI		ds.w	1		; Regular SoundEffects Queue Index
 SoundQueueE		ds.w	1		; Regular SoundEffects Queue End
 TSoundsI		ds.w	MaxRLTSounds	; Turbo SoundEffects Priority Index Order
+_MSUSong		ds.w	1		; MSU1 SONG
 
 
 ;
