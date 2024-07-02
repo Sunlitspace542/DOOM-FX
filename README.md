@@ -17,7 +17,7 @@ qwertymodo - [MSUPCM++ PCM audio creation tool](https://github.com/qwertymodo/ms
 [Download this FLAC set.](https://sc55.duke4.net/flac/doom_sc55_flac.zip) and extract the contents of the ``MUSIC`` directory in that zip into ``msu1_data``.  
 Go to ``msu1_data`` and run ``msupcm.exe`` to generate the PCM files. You will get 21 PCM audio files with the filename prefix ``doom-msu1-``.  
 Once it has finished, you can delete the FLAC files.  
-To use the PCM set with the built ROM, assemble the ROM and rename the .sfc rom in ``HD/source/compbi`` to ``doom_msu1.sfc`` and move it into ``msu1_data``.  
+To use the PCM set with the built ROM, assemble the ROM and rename the .sfc rom in ``HD/compbi`` to ``doom_msu1.sfc`` and move it into ``msu1_data``.  
 The SFC, MSU, and PCM files should all have the same prefix.  
 
 ## Original README.md
