@@ -66,6 +66,8 @@ rlset	var	rlset+1
 	jsr	_RLMenuWaitVBlank		; Wait for VBlank
 	jsr	_RLMenuWaitVBlank		; Wait for VBlank
 	mode	'a'
+	lda	#audiostate_pause ; Pause MSU-1 music
+	sta	msu_control
 	endif
 ;
 ;	>>>   TRANSFER MENU SKULLS DATA   <<<
@@ -416,6 +418,9 @@ _RLM9100
 	jsl	_SendDriverCommandL
 	jsr	_RLMenuWaitVBlank		; Wait for VBlank
 	jsr	_RLMenuWaitVBlank
+	mode	'a!'
+	lda	#audiostate_repeat ; Resume MSU-1 music
+	sta	msu_control
 	mode	'A!'
 	endif
 ;
