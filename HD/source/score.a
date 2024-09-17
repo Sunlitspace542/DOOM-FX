@@ -321,10 +321,10 @@ SCR1800
 ;
 	mode	'X!'
 SCR1900
-	ldx	JOY1L				; Joystick pressed?
+	ldx	PlayerJoy			; Joystick pressed?
 	bne	SCR1900				; Yes, wait until released
 SCR1950
-	ldx	JOY1L				; Wait until pressed
+	ldx	PlayerJoy			; Wait until pressed
 	beq	SCR1950
 	jmp	SCR4000
 
@@ -392,10 +392,10 @@ SCR2500
 ;	>>>   WAIT FOR JOYSTICK PRESS   <<<
 ;
 SCR2900
-	ldx	JOY1L				; Joystick pressed?
+	ldx	PlayerJoy			; Joystick pressed?
 	bne	SCR2900				; Yes, wait until released
 SCR2950
-	ldx	JOY1L				; Wait until pressed
+	ldx	PlayerJoy			; Wait until pressed
 	beq	SCR2950
 ;
 ;	>>>   TRANSFER SCORE EPISODE-SPECIFIC DATA   <<<
