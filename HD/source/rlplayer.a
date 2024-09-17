@@ -141,7 +141,10 @@ RJY2100
 RJY2200
 	lda	JOY1Stat			; MOUSE Previously Connected?
 	dec	a
-	beq	RJY2600				; Yes!
+;	beq	RJY2600				; Yes!
+; Hyperkin mouse is ignorant of sensitivity changes
+; and the above will break compatibility with it
+	bra	RJY2600				; Keep going anyway
 ;
 	ldx	#4-1				; 4 Maximum Speed Settings
 RJY2300
@@ -187,20 +190,21 @@ RJY2380
 	bra	RJY2900
 ;
 RJY2600
-	ldy	#8-1				; Read Y Displacement
-RJY2620
-	lda	$4016+0
-	lsr	a
-	rol	MOUSE1Y
-	dey
-	bpl	RJY2620
-	ldy	#8-1				; Read X Displacement
-RJY2640
+	; From the official SNES mouse BIOS
+	; This fixes Hyperkin mouse polling glitches
+	ldy	#16		; Read 16-bit data
+.m30	; Read X and Y displacement
 	lda	$4016+0
 	lsr	a
 	rol	MOUSE1X
+	rol	MOUSE1Y
+	nop ; Delay read for Hyperkin mouse, it cannot be read too fast
+	nop
+	nop
+	nop
 	dey
-	bpl	RJY2640
+	bne	.m30
+
 	lda	#$01				; MOUSE Connected
 	bra	RJY2900
 
@@ -375,7 +379,7 @@ CJY2000
 	sta	PlayerJoy			; GSU JoyStick Bits
 	mode	'a!'
 	and	#(pjSTRAFELEFT|pjSTRAFERIGHT)	; STRAFE?
-	beq	CJY2200				; No
+	bra	CJY2200				; No
 	ldy	#($03c0<<1)			; Yes, Set Strafing Velocity
 	sty	ITemp
 	lda	JOY1+1
@@ -388,7 +392,7 @@ CJY2000
 CJY2200
 	lda	PlayerJoy0			; Previously STRAFING?
 	and	#(pjSTRAFELEFT|pjSTRAFERIGHT)
-	beq	CJY2220				; No
+	bra	CJY2220				; No
 	mode	'A!'				; Yes, Clear Strafing Velocity
 	stz	PlayerMouseX
 CJY2220

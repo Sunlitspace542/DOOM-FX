@@ -61,13 +61,13 @@ Logo
 ;
 	mode	'A!'
 LGO200
-	lda	JOY1L				; Joystick pressed?
+	lda	PlayerJoy			; Joystick pressed?
 	bne	LGO200				; Yes, wait until released
 LGO400
-	lda	JOY1L				; Wait until pressed
+	lda	PlayerJoy			; Wait until pressed
 	beq	LGO400
 LGO600
-	lda	JOY1L				; Joystick pressed?
+	lda	PlayerJoy			; Joystick pressed?
 	bne	LGO600				; Yes, wait until released
 ;
 	jml	ScreenOff

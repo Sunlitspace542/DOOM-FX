@@ -728,7 +728,8 @@ _RLSMCMainMenu
 _RLEMCInit
 	mode	'a!'
 
-	ife	useIMAGINEER
+; Allow any episode to be started on any difficulty
+	ife	1 ;useIMAGINEER
 	lda	#1				; Episode1 Only
 	ldy	#(((RLViewCharY-(5+4))*8)<<8)|(RLVIntTop+((5+4)*8))
 	ldx	MenuSkillLevel			; Skill Level
@@ -740,9 +741,9 @@ _RLEMCInit
 	bcc	_RLEMCInit2
 	inc	a				; Episode1/2/3
 	endif
-	ifn	useIMAGINEER
+;	ifn	useIMAGINEER
 	lda	#3
-	endif
+;	endif
 	ldy	#(((RLViewCharY-(9+4))*8)<<8)|(RLVIntTop+((9+4)*8))
 
 _RLEMCInit2
