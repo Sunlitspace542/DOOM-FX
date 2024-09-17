@@ -141,10 +141,7 @@ RJY2100
 RJY2200
 	lda	JOY1Stat			; MOUSE Previously Connected?
 	dec	a
-;	beq	RJY2600				; Yes!
-; Hyperkin mouse is ignorant of sensitivity changes
-; and the above will break compatibility with it
-	bra	RJY2600				; Keep going anyway
+	beq	RJY2600				; Yes!
 ;
 	ldx	#4-1				; 4 Maximum Speed Settings
 RJY2300
@@ -171,7 +168,9 @@ RJY2320
 	dex
 	bpl	RJY2300
 RJY2340
+; Hyperkin mouse is ignorant of sensitivity changes
 ;	bra	RJY2800				; Couldn't Set Speed?
+	bra	RJY2600				; Keep going anyway
 RJY2800
 	lda	#$ff				; Invalid Status
 	ldx	#0
