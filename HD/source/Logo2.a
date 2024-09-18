@@ -90,12 +90,12 @@ msuaudiobusyloop_logo2 ; wait for msu to finish loading track
 	jsl	FadeScreenOn
 	mode	'AX!'
 LG2O200
-;	lda	JOY1L				; Joystick pressed?
-;	bne	LG2O200				; Yes, wait until released
+	lda	PlayerJoy			; Joystick pressed?
+	bne	LG2O200				; Yes, wait until released
 	ldx	#(60*3)-1
 LG2O300
-;	lda	JOY1L				; Wait until pressed
-;	bne	LG2O400
+	lda	PlayerJoy			; Wait until pressed
+	bne	LG2O400
 	wai
 	dex
 	bpl	LG2O300
