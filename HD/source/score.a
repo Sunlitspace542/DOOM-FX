@@ -359,7 +359,7 @@ SCR2500
 	iny
 	sty	Temp4+6
 	ply
-	ldx	JOY1L				; Joystick Pressed?
+	ldx	PlayerJoy			; Joystick Pressed?
 	beq	SCR2200
 	stz	Temp4+4				; Yes, TextSpeed=0!
 	bra	SCR2200
@@ -602,7 +602,7 @@ SCR4900
 ;	>>>   WAIT FOR JOYSTICK PRESS   <<<
 ;
 SCR5000
-	ldy	JOY1L				; Joystick Pressed?
+	ldy	PlayerJoy			; Joystick Pressed?
 	jmp	SCR5300
 SCR5200
 	lda	OAMAA				; Blink "YOU ARE HERE"
