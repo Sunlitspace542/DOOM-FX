@@ -602,7 +602,7 @@ SCR4900
 ;	>>>   WAIT FOR JOYSTICK PRESS   <<<
 ;
 SCR5000
-	ldy	PlayerJoy			; Joystick Pressed?
+	ldy	JOY1L				; Joystick Pressed?
 	jmp	SCR5300
 SCR5200
 	lda	OAMAA				; Blink "YOU ARE HERE"
