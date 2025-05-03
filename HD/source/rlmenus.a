@@ -66,7 +66,7 @@ rlset	var	rlset+1
 	jsr	_RLMenuWaitVBlank		; Wait for VBlank
 	jsr	_RLMenuWaitVBlank		; Wait for VBlank
 	mode	'a'
-	lda	#audiostate_pause ; Pause MSU-1 music
+	lda	#audiostate_none ; Pause MSU-1 music
 	sta	msu_control
 	endif
 ;

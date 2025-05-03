@@ -54,12 +54,12 @@ status_revision3		equ %00000001 ; 1
 ; ## MSU_CONTROL register ($2007) ##
 ; Bit 0: Play track flag
 ; Bit 1: Repeat track flag
-; Bit 2: Pause track flag
+; Bit 2: Resume track flag
 ; Bits 3 - 7: unused
 audiostate_none		equ	%00000000 ; 0
 audiostate_norepeat	equ	%00000001 ; 1
 audiostate_repeat	equ	%00000011 ; 3
-audiostate_pause	equ	%00000100 ; 4
+audiostate_resume	equ	%00000100 ; 4
 
 ; Standard Volume for BGM
 ; (Volume can be further tweaked by adjusting normalization in tracks.json)
