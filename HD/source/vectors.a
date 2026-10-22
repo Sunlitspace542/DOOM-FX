@@ -25,7 +25,12 @@
 ;
 	dc.b	'DOOM                 '		; Title Registration
 	dc.b	$20				; Map Mode          ($20)
+	ife	useFX3
 	dc.b	$14				; Cartridge Type    (ROM+SFX+RAM)
+	endif
+	ifn useFX3
+	dc.b	$17				; Cartridge Type    (ROM+SFX3+RAM)
+	endif
 	dc.b	$0b				; CPU ROM Size      (16MBits)
 	dc.b	$00				; CPU RAM Size      (0KBytes)
 	dc.b	$01				; Destination Code  (North America)
