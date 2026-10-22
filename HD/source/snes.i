@@ -8,7 +8,6 @@
 ;*                                                                    *
 ;**********************************************************************
 
-	include	msu1.i
 
 ;
 ;	* * * * * * *       SUPER NINTENDO ENTERTAINMENT SYSTEM EQUATES       * * * * * * *
