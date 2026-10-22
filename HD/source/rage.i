@@ -36,7 +36,8 @@ useCHEATS		equ	0		; 1=Enable CHEAT Codes
 usePAL			equ	0		; 1=Enable PAL Version
 useOCEAN		equ	0		; 1=Enable OCEAN Version
 useIMAGINEER		equ	0		; 1=Enable IMAGINEER Version
-
+;
+useFX3			equ	0		; 1=Enable SUPER FX 3
 
 ;
 ;	* * * * * * *       FLUFF SCREENS       * * * * * * *

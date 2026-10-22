@@ -8,6 +8,7 @@
 ;*                                                                    *
 ;**********************************************************************
 
+	include	msu1.i
 
 ;
 ;	* * * * * * *       SUPER NINTENDO ENTERTAINMENT SYSTEM EQUATES       * * * * * * *
@@ -365,6 +366,7 @@ joyB			equ	%1000000000000000	; <B>
 ;
 ;	* * * * * * *       SUPER F/X (GSU) EQUATES       * * * * * * *
 ;
+	ife	useFX3
 sfxR0		equ	$3000
 sfxR1		equ	$3002
 sfxR2		equ	$3004
@@ -392,6 +394,36 @@ GSUCOPRAM	equ	$000104			; SNES COP RAM Vector for GSU
 GSUABORTRAM	equ	$000100			; SNES ABORT RAM Vector for GSU
 GSUNMIRAM	equ	$000108			; SNES NMI RAM Vector for GSU
 GSUIRQRAM	equ	$00010c			; SNES IRQ RAM Vector for GSU
+	endif
+	ifn	useFX3
+sfxR0		equ	$7000
+sfxR1		equ	$7002
+sfxR2		equ	$7004
+sfxR3		equ	$7006
+sfxR4		equ	$7008
+sfxR5		equ	$700a
+sfxR6		equ	$700c
+sfxR7		equ	$700e
+sfxR8		equ	$7010
+sfxR9		equ	$7012
+sfxR10		equ	$7014
+sfxR11		equ	$7016
+sfxR12		equ	$7018
+sfxR13		equ	$701a
+sfxR14		equ	$701c
+sfxR15		equ	$701e
+sfxSFR		equ	$7030
+sfxPCB		equ	$7034
+sfxSCR		equ	$703a
+sfxCONFIG	equ	$7037
+sfxSCBR		equ	$7038
+sfxCLK		equ	$7039
+GSUBRKRAM	equ	$000100			; SNES BRK RAM Vector for GSU
+GSUCOPRAM	equ	$000104			; SNES COP RAM Vector for GSU
+GSUABORTRAM	equ	$000100			; SNES ABORT RAM Vector for GSU
+GSUNMIRAM	equ	$000108			; SNES NMI RAM Vector for GSU
+GSUIRQRAM	equ	$00010c			; SNES IRQ RAM Vector for GSU
+	endif
 
 ;
 ;	* * * * * * *       DEBUGGER SHADOWS       * * * * * * *
